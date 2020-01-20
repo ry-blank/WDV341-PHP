@@ -8,6 +8,7 @@
     <body>
         <?php
             $firstName = "Ryan";
+            $lastName = "Blankenship";
         ?>
 
 
@@ -16,7 +17,7 @@
         <h2>The line below was written in PHP</h2>
 
         <?php
-            echo "<h3>Hello, my name is " . $firstName . "!";
+            echo "<h3>Hello, my name is " . $firstName . ' ' . $lastName . "!";
         ?> 
 
     </body>
