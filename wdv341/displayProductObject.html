@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+
+	function getProductObject() {
+
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+		  if (this.readyState == 4 && this.status == 200) {
+			  console.log(this.responseText);
+			var myObj = JSON.parse(this.responseText);
+			document.getElementById("displayProductName").innerHTML = myObj.productName;
+			document.getElementById("displayProductPrice").innerHTML = myObj.productPrice;
+			document.getElementById("displayProductPageCount").innerHTML = myObj.productPageCount;
+			document.getElementById("displayProductISBN").innerHTML = myObj.productISBN;
+		  }
+		};
+		xmlhttp.open("GET", "deliverProduct.php", true);
+		xmlhttp.send();		
+		
+	}
+
+
+
+</script>
+
+</head>
+
+<body>
+<h1>WDV341 Intro PHP</h1>
+<h2>PHP-JSON-AJAX Example</h2>
+<p>This page will use AJAX to call for a PHP page on your server. The PHP page will create a JSON object and 'send' it back to this
+	 page where it will be consumed by the page and the contents displayed.</p>
+<p>Product Name: <span id="displayProductName"></span></p>
+<p>Product Price: <span id="displayProductPrice"></span></p>
+<p>Product Page Count: <span id="displayProductPageCount"></span></p>
+<p>Product ISBN: <span id="displayProductISBN"></span></p>
+<p><button onClick="getProductObject()">Display Product</button></p>
+</body>
+</html>
