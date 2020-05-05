@@ -9,9 +9,9 @@ class Emailer {
     //private means you cannot access the property outside the object
 
     private $message = ""; //
-    private $recipientEmail = ""; //
-    private $senderEmail = ""; //
-    private $subject = ""; //
+    private $inEmail = ""; //
+    private $fromEmail = ""; //
+    private $emailSubject = ""; //
 
     //constructor method
     //1. DOES NOT make a new object
@@ -32,15 +32,15 @@ class Emailer {
         }
 
         public function setRecipientEmail($inVal) {
-            $this->recipientEmail = $inVal; //assign input to message
+            $this->inEmail = $inVal; //assign input to message
         }
 
         public function setSenderEmail($inVal) {
-            $this->senderEmail = $inVal; //assign input to message
+            $this->fromEmail = $inVal; //assign input to message
         }
 
         public function setSubject($inVal) {
-            $this->subject = $inVal; //assign input to message
+            $this->emailSubject = $inVal; //assign input to message
         }
 
         //getter methods - used to return the value from the property object
@@ -50,13 +50,13 @@ class Emailer {
             return $this->message;
         }
         public function getRecipientEmail() {
-            return $this->recipientEmail;
+            return $this->inEmail;
         }
         public function getSenderEmail() {
-            return $this->senderEmail;
+            return $this->fromEmail;
         }
         public function getSubject() {
-            return $this->subject;
+            return $this->emailSubject;
         }
 
         //processing methods - everything else

@@ -7,7 +7,7 @@ $_SESSION['validUser'] = false;
 session_unset();	//remove all session variables related to current session
 session_destroy();	//remove current session
 
-header('Location: login.php');
+header('Location: favoriteTeamEntry.php');
 
 
 ?>

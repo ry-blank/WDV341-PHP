@@ -12,8 +12,8 @@ if ($_SESSION['validUser'] == true)
         {
             try 
             {
-                $sql = "SELECT event_id, event_name, event_description, event_presenter, DATE_FORMAT(event_date, '%c/%e/%Y') AS event_date, event_time
-                FROM wdv341_event";
+                $sql = "SELECT first_name, last_name, user_email, from_state, team_picked
+                FROM favorite_team";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
             } 
@@ -58,11 +58,10 @@ else
         
 <table>
     <tr>
-        <th>Event Name</th>
-        <th>Event Description</th>
-        <th>Event Presenter</th>
-        <th>Event Date</th>
-        <th>Event Time</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>From</th>
+        <th>Favorite Team</th>
         <th>Update</th>
         <th>Delete</th>
     </tr>
@@ -70,11 +69,10 @@ else
     if(isset($sql)) { //prepared statement was run
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>
-                    <td style='width:150px;border:1px solid black;'>" . $row['event_name'] . "</td>
-                    <td style='width:150px;border:1px solid black;'>" . $row['event_description'] . "</td>
-                    <td style='width:150px;border:1px solid black;'>" . $row['event_presenter'] . "</td>
-                    <td style='width:150px;border:1px solid black;'>" . $row['event_date'] . "</td>
-                    <td style='width:150px;border:1px solid black;'>" . $row['event_time'] . "</td>
+                    <td style='width:150px;border:1px solid black;'>" . $row['first_name'] . "</td>
+                    <td style='width:150px;border:1px solid black;'>" . $row['last_name'] . "</td>
+                    <td style='width:150px;border:1px solid black;'>" . $row['from_state'] . "</td>
+                    <td style='width:150px;border:1px solid black;'>" . $row['team_picked'] . "</td>
                     <td style='width:150px;border:1px solid black;'>
                         <form name='editForm' method='get' action='updateEventsForm.php'>
                         <button type='submit' name='id' value='".$row['event_id'] ."' class='button'>Update</button></form>

@@ -20,9 +20,9 @@ $password = "";
 
         require "dbConnection.php"; //Connect to the database
 
-        $sql = "SELECT event_user_name, event_user_password
-                FROM event_user
-                WHERE event_user_name='$username'";
+        $sql = "SELECT user_name, user_password
+                FROM login_user
+                WHERE user_name='$username'";
 
         $stmt = $conn->prepare($sql);
 
@@ -30,7 +30,7 @@ $password = "";
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);            
             
-        if($username == $row['event_user_name'] && $password == $row['event_user_password']) //If this is a valid user there should be ONE row only
+        if($username == $row['user_name'] && $password == $row['user_password']) //If this is a valid user there should be ONE row only
         {
             $_SESSION['validUser'] = true; //this is a valid user so set your SESSION variable
             $_SESSION['user'] = $username;
@@ -66,9 +66,7 @@ $password = "";
 
 <body>
 
-<h1>WDV341 Intro PHP</h1>
-
-<h2>Presenters Admin System Example</h2>
+<h1>Administrator Page</h1>
 
 <h2><?php echo $msg;?></h2>
 
@@ -79,9 +77,8 @@ $password = "";
 //turn off PHP and turn on HTML
 ?>
 
-        <h3>Presenters Administrator Options</h3>
-        <p><a href="selectEvents.php">See All Events</a></p>
-        <p><a href="eventsForm.php">Add event</a></p>
+        <h3>Administrator Options</h3>
+        <p><a href="selectEvents.php">See All Entries - update/delete</a></p>
         <p><a href="logout.php">Logout</a></p>
 
 <?php 
